@@ -24,14 +24,10 @@ public class Tower {
     }
 
     public void unregister(Flyable p_flyable) throws IdNotFoundException {
-        if (p_flyable instanceof Aircraft) {
-            Aircraft aircraft = (Aircraft) p_flyable;
-            long newId = aircraft.getId();
-            if (!observers.contains(p_flyable)) {
-                throw new IdNotFoundException("The Flyable " + p_flyable + " is not in the observers list.");
-            }
-            observers.remove(p_flyable);
+        if (!observers.contains(p_flyable)) {
+            throw new IdNotFoundException("The Flyable " + p_flyable + " is not in the observers list.");
         }
+        observers.remove(p_flyable);
     }
 
     protected void conditionChanged() {
