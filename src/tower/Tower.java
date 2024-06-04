@@ -17,22 +17,18 @@ public class Tower {
             observers = new ArrayList<>();
         }
 
-        if (p_flyable instanceof Aircraft) {
-            Aircraft aircraft = (Aircraft) p_flyable;
-            long newId = aircraft.getId();
-            if (isDuplicate(newId)) {
-                throw new DuplicateIdException("The Flyable with ID " + newId + " is already in the observers list.");
-            }
-            observers.add(p_flyable);
+        if (observers.contains(p_flyable)) {
+            throw new DuplicateIdException("The Flyable  " + p_flyable + " is already in the observers list.");
         }
+        observers.add(p_flyable);
     }
 
     public void unregister(Flyable p_flyable) throws IdNotFoundException {
         if (p_flyable instanceof Aircraft) {
             Aircraft aircraft = (Aircraft) p_flyable;
             long newId = aircraft.getId();
-            if (!isDuplicate(newId)) {
-                throw new IdNotFoundException("The Flyable with ID " + newId + " is not in the observers list.");
+            if (!observers.contains(p_flyable)) {
+                throw new IdNotFoundException("The Flyable " + p_flyable + " is not in the observers list.");
             }
             observers.remove(p_flyable);
         }
@@ -40,15 +36,5 @@ public class Tower {
 
     protected void conditionChanged() {
         // Do stuff
-    }
-
-    protected boolean isDuplicate(long newId) {
-        for (Flyable flyable : observers) {
-            Aircraft aircraft = (Aircraft) flyable;
-            if (newId == aircraft.getId()) {
-                return true;
-            }
-        }
-        return false;
     }
 }
