@@ -15,7 +15,7 @@ public class WeatherProvider {
         return instance;
     }
 
-    public String getCurrentWeather(Coordinates p_coordinates){
+    public String getCurrentWeather(Coordinates p_coordinates) {
         return "SUN";
     }
 }
