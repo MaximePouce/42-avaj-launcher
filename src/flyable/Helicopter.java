@@ -21,7 +21,7 @@ public class Helicopter extends Aircraft {
     }
 
     @Override
-    public void updateConditions() throws IdNotFoundException {
+    public void updateConditions() {
         super.updateConditions();
     }
 

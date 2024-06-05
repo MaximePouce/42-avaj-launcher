@@ -1,7 +1,14 @@
 package src.exceptions;
 
-public class FileNotWrittableException extends Exception {
-    public FileNotWrittableException(String message) {
-        super("unable to write in file: " + message);
+public class FileNotWrittableException extends RuntimeException {
+    private final String fileName;
+
+    public FileNotWrittableException(String fileName) {
+        super("unable to write to file: " + fileName);
+        this.fileName = fileName;
+    }
+
+    public String getFileName() {
+        return fileName;
     }
 }

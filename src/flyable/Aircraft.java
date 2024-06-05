@@ -5,6 +5,8 @@ import src.Movement;
 
 import src.tower.WeatherTower;
 
+import src.utils.Writer;
+
 import src.exceptions.IdNotFoundException;
 
 import java.util.Map;
@@ -25,17 +27,18 @@ public class Aircraft extends Flyable {
     }
 
     @Override
-    public void updateConditions() throws IdNotFoundException {
+    public void updateConditions() {
         if (weatherTower == null) {
             return ;
         }
         String weather = weatherTower.getWeather(this.coordinates);
         String message = String.format("%s#%s(%d): %s", this.getType(), this.getName(), this.getId(), reactionMap.get(weather));
-        System.out.println(message);
+        Writer.getInstance().write(message);
+        // System.out.println(message);
         this.applyMovement(weather);
     }
 
-    protected void applyMovement(String weather) throws IdNotFoundException {
+    protected void applyMovement(String weather) {
         Movement movement = movementsMap.get(weather);
         if (movement != null) {
             coordinates.addLongitude(movement.getLongitudeMovement());
