@@ -10,13 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Tower {
-    private List<Flyable> observers;
+    private List<Flyable> observers = new ArrayList<>();
 
     public void register(Flyable p_flyable) throws DuplicateIdException {
-        if (observers == null) {
-            observers = new ArrayList<>();
-        }
-
         if (observers.contains(p_flyable)) {
             throw new DuplicateIdException("The Flyable  " + p_flyable + " is already in the observers list.");
         }
@@ -30,7 +26,15 @@ public class Tower {
         observers.remove(p_flyable);
     }
 
-    protected void conditionChanged() {
-        // Do stuff
+    protected void conditionChanged() throws IdNotFoundException {
+        if (observers.isEmpty()) {
+            return ;
+        }
+        // Creating a Copy to avoid NullPointerException
+        // Could also start from the end of the list, but it messes up the display order
+        List<Flyable> observersCopy = new ArrayList<>(observers);
+        for (Flyable flyable : observersCopy) {
+            flyable.updateConditions();
+        }
     }
 }

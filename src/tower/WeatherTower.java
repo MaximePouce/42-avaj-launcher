@@ -1,6 +1,7 @@
 package src.tower;
 
 import src.Coordinates;
+import src.WeatherProvider;
 
 import src.flyable.Flyable;
 import src.flyable.Aircraft;
@@ -10,12 +11,11 @@ import src.exceptions.IdNotFoundException;
 
 public class WeatherTower extends Tower {
     public String getWeather(Coordinates p_coordinates) {
-        System.out.println("Getting weather.");
-        return "lol";
+        return WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
     }
 
-    public void changeWeather() {
-        System.out.println("Changing weather.");
+    public void changeWeather() throws IdNotFoundException {
+        this.conditionChanged();
     }
 
     @Override
