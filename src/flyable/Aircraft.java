@@ -1,8 +1,9 @@
 package src.flyable;
 
 import src.Coordinates;
-import src.WeatherProvider;
 import src.Movement;
+
+import src.tower.WeatherTower;
 
 import src.exceptions.IdNotFoundException;
 
@@ -18,7 +19,6 @@ public class Aircraft extends Flyable {
     protected Map<String, Movement> movementsMap = new HashMap<>();
 
     protected Aircraft(long p_id, String p_name, Coordinates p_coordinate) {
-        System.out.println("Creating Aircraft");
         this.id = p_id;
         this.name = p_name;
         this.coordinates = p_coordinate;
@@ -26,8 +26,10 @@ public class Aircraft extends Flyable {
 
     @Override
     public void updateConditions() throws IdNotFoundException {
-        // String weather = WeatherProvider.getInstance().getCurrentWeather(this.coordinates);
-        String weather = "SNOW";
+        if (weatherTower == null) {
+            return ;
+        }
+        String weather = weatherTower.getWeather(this.coordinates);
         String message = String.format("%s#%s(%d): %s", this.getType(), this.getName(), this.getId(), reactionMap.get(weather));
         System.out.println(message);
         this.applyMovement(weather);
