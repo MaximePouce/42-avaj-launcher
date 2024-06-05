@@ -66,11 +66,36 @@ public class Parser {
         Map<String, Object> aircraftData = new HashMap<>();
         String[] data = line.split(" ");
 
+        if (data.length != 5) {
+            throw new IncorrectScenarioException("Line must have exactly 5 elements : " + line);
+        }
+
+        int longitude;
+        int latitude;
+        int height;
+
+        try {
+            longitude = Integer.valueOf(data[2]);
+            latitude = Integer.valueOf(data[3]);
+            height = Integer.valueOf(data[4]);
+        }
+        catch (NumberFormatException e) {
+            throw new IncorrectScenarioException("Coordinates must be integers in line: " + line);
+        }
+
+        if (longitude < 0 || latitude < 0 || height < 0) {
+            throw new IncorrectScenarioException("Coordinates must be positive integers in line: " + line);
+        }
+
+        if (height > 100) {
+            throw new IncorrectScenarioException("Height cannot be greater that 100 in line: " + line);
+        }
+
         aircraftData.put("type", data[0]);
         aircraftData.put("name", data[1]);
-        aircraftData.put("longitude", Integer.valueOf(data[2]));
-        aircraftData.put("latitude", Integer.valueOf(data[3]));
-        aircraftData.put("height", Integer.valueOf(data[4]));
+        aircraftData.put("longitude", longitude);
+        aircraftData.put("latitude", latitude);
+        aircraftData.put("height", height);
 
         aircrafts.add(aircraftData);
     }
