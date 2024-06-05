@@ -49,7 +49,7 @@ public class Parser {
             if (runCount < 0 ) {
                 throw new NumberFormatException(line);
             }
-            System.out.println("number of runs: " + line);
+
             while ((line = reader.readLine()) != null) {
                 this.checkLine(line);
                 // aircrafts.add(line);

@@ -1,6 +1,7 @@
 package src.flyable;
 
 import src.Coordinates;
+import src.exceptions.MaxIdReachedException;
 
 public class AircraftFactory {
     // Private static instance
@@ -18,7 +19,10 @@ public class AircraftFactory {
         return instance;
     }
 
-    public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
+    public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) throws MaxIdReachedException {
+        if (aircraftCounter == Long.MAX_VALUE) {
+            throw new MaxIdReachedException(p_type + " " + p_name);
+        }
         ++aircraftCounter;
         switch (p_type.toLowerCase()) {
             case "baloon":

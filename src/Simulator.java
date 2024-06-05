@@ -9,6 +9,7 @@ import src.utils.Parser;
 import src.utils.Writer;
 
 import src.exceptions.FileNotWrittableException;
+import src.exceptions.MaxIdReachedException;
 
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,8 @@ public class Simulator {
             } catch (FileNotWrittableException e) {
                 System.out.println(e.getMessage());
                 System.exit(1);
+            } catch (MaxIdReachedException e) {
+                System.out.println(e.getMessage());
             }
         }
 
