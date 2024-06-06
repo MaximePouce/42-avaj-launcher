@@ -33,6 +33,6 @@ fclean:	clean
 re: fclean all
 
 run: $(NAME)
-	@java src.Simulator
+	@java src.Simulator scenario.txt
 
 .PHONY: all clean fclean re run
