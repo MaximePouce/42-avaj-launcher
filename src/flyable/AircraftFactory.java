@@ -1,6 +1,7 @@
 package src.flyable;
 
 import src.Coordinates;
+
 import src.exceptions.MaxIdReachedException;
 
 public class AircraftFactory {

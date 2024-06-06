@@ -2,7 +2,7 @@ package src.flyable;
 
 import src.Coordinates;
 import src.Movement;
-import src.exceptions.IdNotFoundException;
+
 import java.util.HashMap;
 
 public class JetPlane extends Aircraft {

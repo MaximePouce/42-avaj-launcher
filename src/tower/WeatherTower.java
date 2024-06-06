@@ -8,9 +8,6 @@ import src.flyable.Aircraft;
 
 import src.utils.Writer;
 
-import src.exceptions.DuplicateIdException;
-import src.exceptions.IdNotFoundException;
-
 public class WeatherTower extends Tower {
     public String getWeather(Coordinates p_coordinates) {
         return WeatherProvider.getInstance().getCurrentWeather(p_coordinates);
@@ -23,11 +20,16 @@ public class WeatherTower extends Tower {
     @Override
     public void register(Flyable p_flyable) {
         super.register(p_flyable);
+        
         if (p_flyable instanceof Aircraft) {
             Aircraft aircraft = (Aircraft) p_flyable;
-            String message = String.format("Weather Tower says: %s %s(%d) registered to the weather tower.", aircraft.getType(), aircraft.getName(), aircraft.getId());
+            String message = String.format(
+                "Weather Tower says: %s %s(%d) registered to the weather tower.", 
+                aircraft.getType(),
+                aircraft.getName(),
+                aircraft.getId()
+            );
             Writer.getInstance().write(message);
-            // System.out.println(message);
         }
         p_flyable.registerTower(this);
     }
@@ -35,11 +37,16 @@ public class WeatherTower extends Tower {
     @Override
     public void unregister(Flyable p_flyable) {
         super.unregister(p_flyable);
+
         if (p_flyable instanceof Aircraft) {
             Aircraft aircraft = (Aircraft) p_flyable;
-            String message = String.format("Weather Tower says: %s %s(%d) unregistered from the weather tower.", aircraft.getType(), aircraft.getName(), aircraft.getId());
+            String message = String.format(
+                "Weather Tower says: %s %s(%d) unregistered from the weather tower.",
+                aircraft.getType(),
+                aircraft.getName(),
+                aircraft.getId()
+            );
             Writer.getInstance().write(message);
-            // System.out.println(message);
         }
         p_flyable.registerTower(null);
     }

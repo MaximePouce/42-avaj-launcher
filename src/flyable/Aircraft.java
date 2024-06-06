@@ -7,8 +7,6 @@ import src.tower.WeatherTower;
 
 import src.utils.Writer;
 
-import src.exceptions.IdNotFoundException;
-
 import java.util.Map;
 import java.util.HashMap;
 
@@ -32,9 +30,10 @@ public class Aircraft extends Flyable {
             return ;
         }
         String weather = weatherTower.getWeather(this.coordinates);
-        String message = String.format("%s#%s(%d): %s", this.getType(), this.getName(), this.getId(), reactionMap.get(weather));
+        String message = String.format(
+            "%s#%s(%d): %s", this.getType(), this.getName(), this.getId(), reactionMap.get(weather)
+            );
         Writer.getInstance().write(message);
-        // System.out.println(message);
         this.applyMovement(weather);
     }
 
@@ -62,6 +61,5 @@ public class Aircraft extends Flyable {
     public String getType() {
         return "Aircraft";
     }
-
 
 }

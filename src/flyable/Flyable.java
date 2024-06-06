@@ -1,7 +1,6 @@
 package src.flyable;
 
 import src.tower.WeatherTower;
-import src.exceptions.IdNotFoundException;
 
 public abstract class Flyable {
     protected WeatherTower weatherTower;
