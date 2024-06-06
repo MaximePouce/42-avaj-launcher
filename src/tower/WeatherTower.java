@@ -38,7 +38,8 @@ public class WeatherTower extends Tower {
         if (p_flyable instanceof Aircraft) {
             Aircraft aircraft = (Aircraft) p_flyable;
             String message = String.format("Weather Tower says: %s %s(%d) unregistered from the weather tower.", aircraft.getType(), aircraft.getName(), aircraft.getId());
-            System.out.println(message);
+            Writer.getInstance().write(message);
+            // System.out.println(message);
         }
         p_flyable.registerTower(null);
     }
