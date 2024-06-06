@@ -18,10 +18,15 @@ public class Simulator {
     private static Parser parser;
 
     public static void main(String[] args) {
+        if (args.length != 1) {
+            System.out.println("This program requires one and only one command line argument : The scenario file name.");
+            System.exit(1);
+        }
+        
         WeatherTower wTower = new WeatherTower();
 
         try {
-            parser = new Parser("scenario.txt");
+            parser = new Parser(args[0]);
             parser.parseInputFile();
         } catch (Exception e) {
             System.out.println(e.getMessage());
