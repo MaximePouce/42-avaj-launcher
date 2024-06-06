@@ -9,10 +9,10 @@ public class JetPlane extends Aircraft {
     public JetPlane(long p_id, String p_name, Coordinates p_coordinate) {
         super(p_id, p_name, p_coordinate);
 
-        reactionMap.put("FOG", "Hopefully we won't pierce a Baloon on our way.");
-        reactionMap.put("RAIN", "Welp, guess it's coffee break.");
-        reactionMap.put("SNOW", "Look Ma! No hand!");
-        reactionMap.put("SUN", "Gotta thank the Dev for installing the AC!");
+        reactionMap.put("FOG", "Imagine not having help from a tower in all this fog...");
+        reactionMap.put("RAIN", "If anyone needs a water refill, there's plenty outside!");
+        reactionMap.put("SNOW", "All this snow, we might need to go a bit lower now.");
+        reactionMap.put("SUN", "The sun is watching, time to zoom!");
 
         movementsMap.put("FOG", new Movement(0, 1, 0));
         movementsMap.put("RAIN", new Movement(0, 5, 0));
