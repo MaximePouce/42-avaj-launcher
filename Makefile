@@ -9,6 +9,7 @@ RESET		= \033[0m
 # PROGRAM
 NAME		= Simulator
 SRC_FILE	= sources.txt
+OUT_FILE	= simulation.txt
 
 all: $(NAME)
 
@@ -21,10 +22,11 @@ $(NAME):
 
 clean:
 	@rm $$(find . -name "*.class")
+	rm $(SRC_FILE)
 	@echo "[$(ORANGE)$(NAME)$(RESET)] clean *.class files : $(GREEN)OK$(RESET)"
 
 fclean:	clean
-	@rm $(SRC_FILE)
+	rm $(OUT_FILE)
 	@echo "[$(ORANGE)$(NAME)$(RESET)] fclean: $(GREEN)OK$(RESET)"
 	@echo "[$(GREEN)success$(RESET)]: $(NAME) has been cleaned up"
 
