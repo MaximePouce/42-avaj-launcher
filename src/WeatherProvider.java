@@ -16,6 +16,10 @@ public class WeatherProvider {
     }
 
     public String getCurrentWeather(Coordinates p_coordinates) {
-        return "SUN";
+        int longitude = p_coordinates.getLongitude();
+        int latitude = p_coordinates.getLatitude();
+        int height = p_coordinates.getHeight();
+        int weatherIndex = (longitude * latitude % height) % weather.length;
+        return weather[weatherIndex];
     }
 }
