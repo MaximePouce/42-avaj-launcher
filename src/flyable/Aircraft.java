@@ -3,8 +3,6 @@ package src.flyable;
 import src.Coordinates;
 import src.Movement;
 
-import src.tower.WeatherTower;
-
 import src.utils.Writer;
 
 import java.util.Map;

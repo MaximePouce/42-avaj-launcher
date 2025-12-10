@@ -1,7 +1,6 @@
 package src.tower;
 
 import src.flyable.Flyable;
-import src.flyable.Aircraft;
 
 import java.util.ArrayList;
 import java.util.List;

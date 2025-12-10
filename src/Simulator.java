@@ -1,7 +1,6 @@
 package src;
 
 import src.flyable.AircraftFactory;
-import src.flyable.Flyable;
 
 import src.tower.WeatherTower;
 

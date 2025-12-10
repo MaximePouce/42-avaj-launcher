@@ -2,7 +2,7 @@ package src.utils;
 
 import src.exceptions.FileNotFoundException;
 import src.exceptions.FileNotReadableException;
-import src.exceptions.FileNotWrittableException;
+// import src.exceptions.FileNotWrittableException;
 import src.exceptions.IncorrectScenarioException;
 import src.exceptions.EmptyScenarioException;
 
@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class Parser {
     private File inFile;
-    private File outFile = new File("simulation.txt");
+    // private File outFile = new File("simulation.txt");
     private int runCount;
     private List<Map<String, Object>> aircrafts = new ArrayList<>();
 
@@ -43,10 +43,12 @@ public class Parser {
             BufferedReader reader = new BufferedReader(new FileReader(inFile.getName()));
             String line = reader.readLine();
             if (line == null) {
+                reader.close();
                 throw new EmptyScenarioException();
             }
             runCount = Integer.valueOf(line);
             if (runCount < 0 ) {
+                reader.close();
                 throw new NumberFormatException(line);
             }
 
